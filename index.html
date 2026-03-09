@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <!--
+    ██████████████████████████████████████████████████
+    CO1: HTML Document Structure, Meta Tags, HTTP/HTTPS,
+         Web hosting/domain, Browser basics
+    CO5: SEO meta tags, CORS-safe CDN resources,
+         Page load optimization (preconnect, defer)
+    ██████████████████████████████████████████████████
+  -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- CO5: SEO meta tags -->
+  <meta name="description" content="ELQPB — E-Learning Quiz Performance Booster. Adaptive quizzes, real-time analytics, leaderboards and live competitions." />
+  <meta name="keywords" content="quiz, e-learning, performance, education, leaderboard, DSA, HTML, CSS, JavaScript" />
+  <meta name="author" content="ELQPB Team" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- CO5: Open Graph for social sharing -->
+  <meta property="og:title" content="ELQPB — Quiz Performance Booster" />
+  <meta property="og:description" content="Sharpen your skills with adaptive quizzes and analytics." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0a0e1a" />
+
+  <title>ELQPB — E-Learning Quiz Performance Booster</title>
+
+  <!-- CO1: Web hosting / CDN — preconnect for performance (CO5) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- CO1: CSS Typography via Google Fonts — distinctive pairing -->
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Bricolage+Grotesque:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- CO5: Chart.js via CDN (CORS-safe, deferred for performance) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
+
+  <!-- CO1: External stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  PAGE: LOGIN / REGISTER
+  CO2: Forms, Input types, Semantic tags, Accessibility
+  CO1: HTML structure, headings, paragraphs
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ -->
+<div id="page-login" class="page active" role="main">
+
+  <!-- Atmospheric background -->
+  <div class="login-bg" aria-hidden="true">
+    <div class="bg-grid"></div>
+    <div class="bg-orb orb-a"></div>
+    <div class="bg-orb orb-b"></div>
+    <div class="bg-orb orb-c"></div>
+    <div class="bg-noise"></div>
+  </div>
+
+  <div class="login-container">
+
+    <!-- LEFT: Hero Panel -->
+    <aside class="login-hero" aria-hidden="true">
+      <div class="hero-tag">BETA · 2025</div>
+      <h1 class="hero-title">
+        Master<br/>
+        <span class="hero-accent">Every</span><br/>
+        Subject.
+      </h1>
+      <p class="hero-body">
+        Adaptive quizzes powered by DSA.<br/>
+        Track growth. Compete globally.<br/>
+        Become unstoppable.
+      </p>
+
+      <div class="hero-metrics" role="list">
+        <div class="metric" role="listitem">
+          <span class="metric-n">500+</span>
+          <span class="metric-l">Questions</span>
+        </div>
+        <div class="metric-divider" aria-hidden="true"></div>
+        <div class="metric" role="listitem">
+          <span class="metric-n">6</span>
+          <span class="metric-l">Subjects</span>
+        </div>
+        <div class="metric-divider" aria-hidden="true"></div>
+        <div class="metric" role="listitem">
+          <span class="metric-n">∞</span>
+          <span class="metric-l">Potential</span>
+        </div>
+      </div>
+
+      <!-- Floating subject pills -->
+      <div class="floating-pills" aria-hidden="true">
+        <span class="pill p1">📐 Mathematics</span>
+        <span class="pill p2">🔬 Science</span>
+        <span class="pill p3">💻 Computer Science</span>
+        <span class="pill p4">🏛️ History</span>
+        <span class="pill p5">📚 English</span>
+        <span class="pill p6">🌐 General Knowledge</span>
+      </div>
+
+      <!-- Fake testimonial card -->
+      <div class="testi-card" aria-hidden="true">
+        <div class="testi-avatar">AK</div>
+        <div class="testi-text">
+          <p>"Scored 94% after just 2 weeks on ELQPB!"</p>
+          <span>— Aditya K., CSE '25</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- RIGHT: Auth Panel -->
+    <section class="login-panel" aria-label="Authentication">
+      <div class="login-box">
+
+        <!-- Logo -->
+        <div class="auth-logo" aria-label="ELQPB Logo">
+          <span class="auth-logo-icon" aria-hidden="true">⚡</span>
+          <span class="auth-logo-text">ELQPB</span>
+        </div>
+
+        <!-- CO2: Tab interface with ARIA roles -->
+        <div class="auth-tabs" role="tablist" aria-label="Sign in or create account">
+          <button class="auth-tab active"
+            id="tab-btn-login" role="tab"
+            aria-selected="true" aria-controls="panel-login"
+            onclick="switchAuthTab('login')">
+            Sign In
+          </button>
+          <button class="auth-tab"
+            id="tab-btn-register" role="tab"
+            aria-selected="false" aria-controls="panel-register"
+            onclick="switchAuthTab('register')">
+            Register
+          </button>
+          <span class="tab-track" id="tab-track" aria-hidden="true"></span>
+        </div>
+
+        <!-- ════════════════════════════════
+          LOGIN PANEL
+          CO2: All input types, validation
+          CO3: JS form handling
+        ════════════════════════════════ -->
+        <div id="panel-login" class="auth-panel active" role="tabpanel" aria-labelledby="tab-btn-login">
+
+          <!-- CO2: Login method selector — username / email / phone -->
+          <div class="method-selector" role="group" aria-label="Choose login method">
+            <button class="method-pill active" id="method-u"
+              aria-pressed="true" onclick="setMethod('username')">
+              <span class="mp-icon">👤</span> Username
+            </button>
+            <button class="method-pill" id="method-e"
+              aria-pressed="false" onclick="setMethod('email')">
+              <span class="mp-icon">✉️</span> Email
+            </button>
+            <button class="method-pill" id="method-p"
+              aria-pressed="false" onclick="setMethod('phone')">
+              <span class="mp-icon">📱</span> Phone
+            </button>
+          </div>
+
+          <!-- CO2: Login form with all semantic attributes -->
+          <form id="login-form" class="auth-form" novalidate
+            aria-label="Login form" autocomplete="on"
+            onsubmit="handleLogin(event)">
+
+            <div class="field" id="field-identifier">
+              <label class="field-label" for="login-id" id="login-id-label">Username</label>
+              <div class="field-input-wrap">
+                <span class="field-ico" id="login-field-ico" aria-hidden="true">@</span>
+                <!-- CO2: input type changes based on method -->
+                <input
+                  type="text"
+                  id="login-id"
+                  name="identifier"
+                  class="field-input"
+                  placeholder="Enter your username"
+                  autocomplete="username"
+                  aria-labelledby="login-id-label"
+                  aria-required="true"
+                  aria-describedby="login-id-err"
+                  required
+                />
+              </div>
+              <span class="field-err" id="login-id-err" role="alert" aria-live="polite"></span>
+            </div>
+
+            <div class="field">
+              <label class="field-label" for="login-pw">Password</label>
+              <div class="field-input-wrap">
+                <span class="field-ico" aria-hidden="true">🔒</span>
+                <!-- CO2: type="password" -->
+                <input
+                  type="password"
+                  id="login-pw"
+                  name="password"
+                  class="field-input"
+                  placeholder="Your password"
+                  autocomplete="current-password"
+                  aria-required="true"
+                  aria-describedby="login-pw-err"
+                  required
+                  minlength="4"
+                />
+                <button type="button" class="eye-btn"
+                  onclick="togglePassword('login-pw', this)"
+                  aria-label="Show or hide password">
+                  <span aria-hidden="true">👁</span>
+                </button>
+              </div>
+              <span class="field-err" id="login-pw-err" role="alert" aria-live="polite"></span>
+            </div>
+
+            <div class="field-row-aux">
+              <!-- CO2: checkbox input -->
+              <label class="check-wrap">
+                <input type="checkbox" name="remember" id="remember" class="check-input" />
+                <span class="check-box" aria-hidden="true"></span>
+                <span class="check-label-txt">Remember me</span>
+              </label>
+              <button type="button" class="ghost-link" onclick="showToast('Password reset coming soon!','info')">
+                Forgot password?
+              </button>
+            </div>
+
+            <div class="form-err-banner" id="login-err" role="alert" aria-live="assertive"></div>
+
+            <button type="submit" class="btn-primary" id="login-btn">
+              <span class="btn-label">Sign In</span>
+              <span class="btn-arrow" aria-hidden="true">→</span>
+              <span class="btn-loader" aria-hidden="true"></span>
+            </button>
+          </form>
+
+          <div class="or-divider" aria-hidden="true"><span>or</span></div>
+
+          <!-- CO2: Social login buttons (accessible) -->
+          <div class="social-login" role="group" aria-label="Social login options">
+            <button class="social-btn" onclick="socialLogin('Google')" aria-label="Sign in with Google">
+              <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+              </svg>
+              Google
+            </button>
+            <button class="social-btn" onclick="socialLogin('GitHub')" aria-label="Sign in with GitHub">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+              GitHub
+            </button>
+          </div>
+
+          <p class="demo-hint">
+            Demo credentials: <code>admin</code> / <code>admin</code>
+          </p>
+        </div>
+
+        <!-- ════════════════════════════════
+          REGISTER PANEL
+          CO2: ALL input types demonstrated
+        ════════════════════════════════ -->
+        <div id="panel-register" class="auth-panel" role="tabpanel" aria-labelledby="tab-btn-register">
+
+          <form id="register-form" class="auth-form" novalidate
+            aria-label="Create account form"
+            onsubmit="handleRegister(event)">
+
+            <!-- CO2: Two-column name row -->
+            <div class="field-row-2col">
+              <div class="field">
+                <label class="field-label" for="reg-fn">First Name</label>
+                <div class="field-input-wrap">
+                  <span class="field-ico" aria-hidden="true">✦</span>
+                  <!-- CO2: type="text", autocomplete -->
+                  <input type="text" id="reg-fn" name="fname" class="field-input"
+                    placeholder="First" autocomplete="given-name"
+                    required aria-required="true" />
+                </div>
+              </div>
+              <div class="field">
+                <label class="field-label" for="reg-ln">Last Name</label>
+                <div class="field-input-wrap">
+                  <span class="field-ico" aria-hidden="true">✦</span>
+                  <input type="text" id="reg-ln" name="lname" class="field-input"
+                    placeholder="Last" autocomplete="family-name"
+                    required aria-required="true" />
+                </div>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="field-label" for="reg-user">Username</label>
+              <div class="field-input-wrap">
+                <span class="field-ico" aria-hidden="true">@</span>
+                <input type="text" id="reg-user" name="username" class="field-input"
+                  placeholder="choose_a_username"
+                  autocomplete="username"
+                  pattern="[a-zA-Z0-9_]{3,20}"
+                  required aria-required="true"
+                  aria-describedby="reg-user-hint" />
+              </div>
+              <span class="field-hint" id="reg-user-hint">3–20 chars · letters, numbers, _</span>
+            </div>
+
+            <!-- CO2: type="email" -->
+            <div class="field">
+              <label class="field-label" for="reg-email">Email Address</label>
+              <div class="field-input-wrap">
+                <span class="field-ico" aria-hidden="true">✉</span>
+                <input type="email" id="reg-email" name="email" class="field-input"
+                  placeholder="you@university.edu"
+                  autocomplete="email"
+                  required aria-required="true"
+                  aria-describedby="reg-email-err" />
+              </div>
+              <span class="field-err" id="reg-email-err" role="alert" aria-live="polite"></span>
+            </div>
+
+            <!-- CO2: type="tel" -->
+            <div class="field">
+              <label class="field-label" for="reg-phone">
+                Phone Number
+                <span class="label-optional">(optional)</span>
+              </label>
+              <div class="field-input-wrap">
+                <span class="field-ico" aria-hidden="true">📱</span>
+                <input type="tel" id="reg-phone" name="phone" class="field-input"
+                  placeholder="+91 98765 43210"
+                  autocomplete="tel"
+                  pattern="[+]?[\d\s\-]{8,15}"
+                  aria-describedby="reg-phone-hint" />
+              </div>
+              <span class="field-hint" id="reg-phone-hint">Used for account recovery only</span>
+            </div>
+
+            <!-- CO2: type="date" for DOB -->
+            <div class="field">
+              <label class="field-label" for="reg-dob">
+                Date of Birth
+                <span class="label-optional">(optional)</span>
+              </label>
+              <div class="field-input-wrap">
+                <span class="field-ico" aria-hidden="true">📅</span>
+                <!-- CO2: type="date" input -->
+                <input type="date" id="reg-dob" name="dob" class="field-input"
+                  autocomplete="bday"
+                  max="2015-01-01" />
+              </div>
+            </div>
+
+            <!-- CO2: type="password" with strength meter -->
+            <div class="field">
+              <label class="field-label" for="reg-pw">Password</label>
+              <div class="field-input-wrap">
+                <span class="field-ico" aria-hidden="true">🔒</span>
+                <input type="password" id="reg-pw" name="password" class="field-input"
+                  placeholder="Minimum 6 characters"
+                  autocomplete="new-password"
+                  required aria-required="true" minlength="6"
+                  oninput="calcStrength(this.value)" />
+                <button type="button" class="eye-btn"
+                  onclick="togglePassword('reg-pw', this)" aria-label="Toggle visibility">
+                  <span aria-hidden="true">👁</span>
+                </button>
+              </div>
+              <!-- CO2: Custom password strength (CSS custom properties + JS) -->
+              <div class="strength-meter" id="strength-meter" aria-live="polite">
+                <div class="strength-bars">
+                  <div class="sb" id="sb-1"></div>
+                  <div class="sb" id="sb-2"></div>
+                  <div class="sb" id="sb-3"></div>
+                  <div class="sb" id="sb-4"></div>
+                </div>
+                <span class="strength-txt" id="strength-txt"></span>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="field-label" for="reg-cpw">Confirm Password</label>
+              <div class="field-input-wrap">
+                <span class="field-ico" aria-hidden="true">🔑</span>
+                <input type="password" id="reg-cpw" name="confirm" class="field-input"
+                  placeholder="Repeat password"
+                  autocomplete="new-password"
+                  required aria-describedby="reg-cpw-err" />
+              </div>
+              <span class="field-err" id="reg-cpw-err" role="alert" aria-live="polite"></span>
+            </div>
+
+            <!-- CO2: select element -->
+            <div class="field">
+              <label class="field-label" for="reg-role">I am a</label>
+              <div class="field-input-wrap">
+                <span class="field-ico" aria-hidden="true">🎓</span>
+                <select id="reg-role" name="role" class="field-input field-select"
+                  required aria-required="true">
+                  <option value="">Select your role…</option>
+                  <option value="student">Student</option>
+                  <option value="teacher">Teacher / Educator</option>
+                  <option value="professional">Working Professional</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- CO2: checkbox + accessible label -->
+            <label class="terms-wrap check-wrap">
+              <input type="checkbox" id="reg-terms" name="terms" class="check-input"
+                required aria-required="true" />
+              <span class="check-box" aria-hidden="true"></span>
+              <span class="check-label-txt">
+                I agree to the
+                <button type="button" class="ghost-link" onclick="showToast('Terms page coming soon','info')">Terms</button>
+                &amp;
+                <button type="button" class="ghost-link" onclick="showToast('Privacy page coming soon','info')">Privacy Policy</button>
+              </span>
+            </label>
+
+            <div class="form-err-banner" id="reg-err" role="alert" aria-live="assertive"></div>
+
+            <button type="submit" class="btn-primary" id="register-btn">
+              <span class="btn-label">Create Account</span>
+              <span class="btn-arrow" aria-hidden="true">→</span>
+              <span class="btn-loader" aria-hidden="true"></span>
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </section>
+  </div>
+</div>
+
+
+<!-- ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  PAGE: MAIN APPLICATION
+  CO2: Semantic HTML5 elements (header, nav, main, section, article, aside, footer)
+  CO1: Headings hierarchy, links
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ -->
+<div id="page-app" class="page" role="application">
+
+  <!-- CO2: Semantic <header> and <nav> -->
+  <header class="app-header" role="banner">
+    <nav class="app-nav" role="navigation" aria-label="Main navigation">
+      <a class="nav-brand" href="#" onclick="return false" aria-label="ELQPB Home">
+        <span class="brand-icon" aria-hidden="true">⚡</span>
+        <span class="brand-name">ELQPB</span>
+      </a>
+
+      <!-- CO2: nav list with semantic <ul><li> -->
+      <ul class="nav-list" role="list">
+        <li role="listitem">
+          <button class="nav-item active" onclick="showSection('dashboard')"
+            data-section="dashboard" aria-current="page">
+            <span class="ni-icon" aria-hidden="true">⬡</span> Dashboard
+          </button>
+        </li>
+        <li role="listitem">
+          <button class="nav-item" onclick="showSection('quiz-setup')"
+            data-section="quiz-setup">
+            <span class="ni-icon" aria-hidden="true">▷</span> Quiz
+          </button>
+        </li>
+        <li role="listitem">
+          <button class="nav-item" onclick="showSection('analysis')"
+            data-section="analysis">
+            <span class="ni-icon" aria-hidden="true">◈</span> Analytics
+          </button>
+        </li>
+        <li role="listitem">
+          <button class="nav-item" onclick="showSection('leaderboard')"
+            data-section="leaderboard">
+            <span class="ni-icon" aria-hidden="true">◉</span> Ranks
+          </button>
+        </li>
+        <li role="listitem">
+          <button class="nav-item" onclick="showSection('competition')"
+            data-section="competition">
+            <span class="ni-icon" aria-hidden="true">⟳</span> Compete
+          </button>
+        </li>
+      </ul>
+
+      <div class="nav-right">
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light mode" title="Toggle theme">
+          <span id="theme-icon" aria-hidden="true">🌙</span>
+        </button>
+        <button class="avatar-btn" id="nav-avatar" onclick="toggleUserMenu()"
+          aria-label="User menu" aria-expanded="false" aria-haspopup="true">
+          <span id="avatar-initials">A</span>
+        </button>
+        <div class="user-menu" id="user-menu" role="menu" aria-hidden="true">
+          <div class="um-profile">
+            <div class="um-avatar" id="um-avatar" aria-hidden="true">A</div>
+            <div class="um-info">
+              <div class="um-name" id="um-name">User</div>
+              <div class="um-email" id="um-email">user@elqpb.com</div>
+            </div>
+          </div>
+          <hr class="um-hr" />
+          <button class="um-item" role="menuitem" onclick="showSection('analysis');closeUserMenu()">📊 My Analytics</button>
+          <button class="um-item" role="menuitem" onclick="showSection('leaderboard');closeUserMenu()">🏆 Leaderboard</button>
+          <hr class="um-hr" />
+          <button class="um-item um-logout" role="menuitem" onclick="doLogout()">↩ Sign Out</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- CO2: Semantic <main> -->
+  <main class="app-main" id="app-main" role="main">
+
+    <!-- ══════════════════════════════════
+      SECTION: DASHBOARD
+      CO2: article, section, semantic structure
+      CO4: DOM manipulation, chart rendering
+    ══════════════════════════════════ -->
+    <section id="sec-dashboard" class="app-sec active" aria-label="Dashboard">
+      <div class="sec-head">
+        <div>
+          <h2 class="sec-title" id="dash-title">Dashboard</h2>
+          <p class="sec-sub" id="dash-greet">Good morning 👋</p>
+        </div>
+        <button class="btn-accent" onclick="showSection('quiz-setup')">+ New Quiz</button>
+      </div>
+
+      <!-- CO2: article elements for stat cards -->
+      <div class="stats-row">
+        <article class="stat-card" tabindex="0">
+          <div class="sc-top">
+            <span class="sc-icon" aria-hidden="true">📝</span>
+            <span class="sc-delta" id="sc-delta-quizzes"></span>
+          </div>
+          <div class="sc-val" id="sc-quizzes">0</div>
+          <div class="sc-lbl">Quizzes Taken</div>
+        </article>
+        <article class="stat-card accent-amber" tabindex="0">
+          <div class="sc-top">
+            <span class="sc-icon" aria-hidden="true">📈</span>
+            <span class="sc-delta" id="sc-delta-avg"></span>
+          </div>
+          <div class="sc-val" id="sc-avg">—</div>
+          <div class="sc-lbl">Average Score</div>
+        </article>
+        <article class="stat-card accent-cyan" tabindex="0">
+          <div class="sc-top">
+            <span class="sc-icon" aria-hidden="true">🏆</span>
+          </div>
+          <div class="sc-val" id="sc-best">—</div>
+          <div class="sc-lbl">Best Score</div>
+        </article>
+        <article class="stat-card accent-rose" tabindex="0">
+          <div class="sc-top">
+            <span class="sc-icon" aria-hidden="true">🌍</span>
+          </div>
+          <div class="sc-val" id="sc-rank">#—</div>
+          <div class="sc-lbl">Global Rank</div>
+        </article>
+      </div>
+
+      <div class="charts-row">
+        <div class="card card-wide">
+          <div class="card-head">
+            <h3 class="card-title">Score History</h3>
+            <span class="streak-badge" id="streak-badge"></span>
+          </div>
+          <!-- CO2: figure/figcaption for semantic chart wrapping -->
+          <figure>
+            <canvas id="chart-history" role="img" aria-label="Line chart showing quiz score history"></canvas>
+            <figcaption class="visually-hidden">Score history over time</figcaption>
+          </figure>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <h3 class="card-title">Subject Strength</h3>
+          </div>
+          <figure>
+            <canvas id="chart-subjects" role="img" aria-label="Bar chart showing scores per subject"></canvas>
+            <figcaption class="visually-hidden">Average scores by subject</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <h3 class="card-title">Recent Activity</h3>
+        </div>
+        <!-- CO2: article + time elements (semantic media tags) -->
+        <div id="recent-list" role="feed" aria-label="Recent quiz attempts">
+          <p class="empty-msg">No quizzes yet — press <strong>+ New Quiz</strong> to start! 🚀</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+      SECTION: QUIZ SETUP
+      CO2: Forms, range, radio-like buttons
+    ══════════════════════════════════ -->
+    <section id="sec-quiz-setup" class="app-sec" aria-label="Quiz Setup">
+      <div class="sec-head">
+        <div>
+          <h2 class="sec-title">New Quiz</h2>
+          <p class="sec-sub">Configure your challenge</p>
+        </div>
+      </div>
+
+      <div class="setup-grid">
+        <div class="setup-col-main">
+          <div class="card">
+            <div class="card-head"><h3 class="card-title">📚 Subject</h3></div>
+            <div class="subject-grid" role="radiogroup" aria-label="Choose a subject">
+              <button class="subj-btn" onclick="pickSubject('Math', this)"
+                role="radio" aria-checked="false" tabindex="0">
+                <span class="subj-em" aria-hidden="true">📐</span>
+                <span class="subj-nm">Mathematics</span>
+              </button>
+              <button class="subj-btn" onclick="pickSubject('Science', this)"
+                role="radio" aria-checked="false">
+                <span class="subj-em" aria-hidden="true">🔬</span>
+                <span class="subj-nm">Science</span>
+              </button>
+              <button class="subj-btn" onclick="pickSubject('History', this)"
+                role="radio" aria-checked="false">
+                <span class="subj-em" aria-hidden="true">🏛️</span>
+                <span class="subj-nm">History</span>
+              </button>
+              <button class="subj-btn" onclick="pickSubject('English', this)"
+                role="radio" aria-checked="false">
+                <span class="subj-em" aria-hidden="true">📚</span>
+                <span class="subj-nm">English</span>
+              </button>
+              <button class="subj-btn" onclick="pickSubject('CS', this)"
+                role="radio" aria-checked="false">
+                <span class="subj-em" aria-hidden="true">💻</span>
+                <span class="subj-nm">Comp. Sci</span>
+              </button>
+              <button class="subj-btn" onclick="pickSubject('General', this)"
+                role="radio" aria-checked="false">
+                <span class="subj-em" aria-hidden="true">🌐</span>
+                <span class="subj-nm">General KQ</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><h3 class="card-title">🔢 Questions: <span id="q-val">10</span></h3></div>
+            <!-- CO2: type="range" input -->
+            <div class="range-wrap">
+              <span class="range-bound">5</span>
+              <input type="range" id="q-range" min="5" max="30" value="10"
+                class="styled-range"
+                aria-label="Number of questions"
+                aria-valuemin="5" aria-valuemax="30" aria-valuenow="10"
+                oninput="updateRange(this)" />
+              <span class="range-bound">30</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="setup-col-side">
+          <div class="card">
+            <div class="card-head"><h3 class="card-title">⚡ Difficulty</h3></div>
+            <div class="diff-group" role="radiogroup" aria-label="Quiz difficulty">
+              <button class="diff-opt easy" onclick="pickDiff('easy',this)" role="radio" aria-checked="false">🟢 Easy</button>
+              <button class="diff-opt medium active" onclick="pickDiff('medium',this)" role="radio" aria-checked="true">🟡 Medium</button>
+              <button class="diff-opt hard" onclick="pickDiff('hard',this)" role="radio" aria-checked="false">🔴 Hard</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><h3 class="card-title">⏱ Time Limit</h3></div>
+            <div class="chip-group" role="radiogroup" aria-label="Time per question">
+              <button class="chip" onclick="pickTime(null,this)" role="radio" aria-checked="false">∞ None</button>
+              <button class="chip active" onclick="pickTime(30,this)" role="radio" aria-checked="true">30s</button>
+              <button class="chip" onclick="pickTime(60,this)" role="radio" aria-checked="false">60s</button>
+              <button class="chip" onclick="pickTime(90,this)" role="radio" aria-checked="false">90s</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><h3 class="card-title">🎮 Mode</h3></div>
+            <div class="mode-group">
+              <button class="mode-opt" onclick="pickMode('practice',this)" role="radio" aria-checked="false">
+                <span class="mode-ico" aria-hidden="true">📝</span>
+                <div class="mode-info">
+                  <div class="mode-name">Practice</div>
+                  <div class="mode-desc">Instant answer reveal</div>
+                </div>
+              </button>
+              <button class="mode-opt active" onclick="pickMode('exam',this)" role="radio" aria-checked="true">
+                <span class="mode-ico" aria-hidden="true">🎯</span>
+                <div class="mode-info">
+                  <div class="mode-name">Exam</div>
+                  <div class="mode-desc">Results at the end</div>
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <button class="btn-primary btn-launch" onclick="launchQuiz()">
+            <span class="btn-label">Launch Quiz 🚀</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+      SECTION: ANALYTICS
+    ══════════════════════════════════ -->
+    <section id="sec-analysis" class="app-sec" aria-label="Performance Analysis">
+      <div class="sec-head">
+        <div>
+          <h2 class="sec-title">Analytics</h2>
+          <p class="sec-sub">Understand your performance at a glance</p>
+        </div>
+      </div>
+
+      <div class="charts-row">
+        <div class="card card-wide">
+          <div class="card-head"><h3 class="card-title">Performance Over Time</h3></div>
+          <figure>
+            <canvas id="chart-trend" role="img" aria-label="Score trend line chart"></canvas>
+          </figure>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3 class="card-title">Subject Radar</h3></div>
+          <figure>
+            <canvas id="chart-radar" role="img" aria-label="Radar chart of subject scores"></canvas>
+          </figure>
+        </div>
+      </div>
+
+      <div class="analysis-bottom">
+        <div class="card">
+          <div class="card-head"><h3 class="card-title">Topic Scores</h3></div>
+          <div id="topic-bars" role="list" aria-label="Topic score breakdown"></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3 class="card-title">💡 Smart Tips</h3></div>
+          <div id="smart-tips" role="list"></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3 class="card-title">Difficulty Split</h3></div>
+          <figure>
+            <canvas id="chart-diff-split" role="img" aria-label="Difficulty distribution doughnut"></canvas>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+      SECTION: LEADERBOARD
+      CO2: semantic table, thead, tbody, scope attributes
+    ══════════════════════════════════ -->
+    <section id="sec-leaderboard" class="app-sec" aria-label="Global Leaderboard">
+      <div class="sec-head">
+        <div>
+          <h2 class="sec-title">Leaderboard</h2>
+          <p class="sec-sub">Top performers across all subjects</p>
+        </div>
+        <!-- CO2: select element for filtering -->
+        <select id="lb-subject" class="styled-select"
+          onchange="renderLeaderboard()" aria-label="Filter leaderboard by subject">
+          <option value="all">All Subjects</option>
+          <option value="Math">Mathematics</option>
+          <option value="Science">Science</option>
+          <option value="History">History</option>
+          <option value="CS">Computer Sci</option>
+          <option value="English">English</option>
+          <option value="General">General KQ</option>
+        </select>
+      </div>
+
+      <div class="lb-layout">
+        <div class="lb-main">
+          <div class="card no-pad">
+            <!-- CO2: Accessible table with scope, caption -->
+            <table class="lb-table" aria-label="Student rankings">
+              <caption class="visually-hidden">Global leaderboard showing student ranks and scores</caption>
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Student</th>
+                  <th scope="col">Quizzes</th>
+                  <th scope="col">Avg Score</th>
+                  <th scope="col">Best</th>
+                  <th scope="col">Progress</th>
+                </tr>
+              </thead>
+              <tbody id="lb-rows" aria-live="polite"></tbody>
+            </table>
+          </div>
+        </div>
+        <aside class="lb-aside" aria-label="Your ranking">
+          <div class="card your-rank">
+            <div class="card-head"><h3 class="card-title">Your Rank</h3></div>
+            <div class="big-rank" id="your-rank">#—</div>
+            <p class="rank-note">among all students</p>
+          </div>
+          <div class="card">
+            <div class="card-head"><h3 class="card-title">🥇 Podium</h3></div>
+            <ol id="podium" aria-label="Top 3 students" class="podium-list"></ol>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+      SECTION: COMPETITION
+    ══════════════════════════════════ -->
+    <section id="sec-competition" class="app-sec" aria-label="Competitions">
+      <div class="sec-head">
+        <div>
+          <h2 class="sec-title">Competitions</h2>
+          <p class="sec-sub">Live tournaments · Weekly challenges · Rewards</p>
+        </div>
+      </div>
+      <!-- CO2: role="list" for accessibility -->
+      <div id="comp-cards" class="comp-grid" role="list" aria-label="Competition list"></div>
+    </section>
+
+  </main>
+
+  <!-- CO2: Semantic footer -->
+  <footer class="app-footer" role="contentinfo">
+    <p>© 2025 ELQPB — Built with HTML · CSS · JavaScript + DSA concepts</p>
+  </footer>
+</div>
+
+
+<!-- ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  PAGE: QUIZ (Full-screen active quiz)
+  CO4: DOM manipulation, event handling
+  CO3: JavaScript logic
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ -->
+<div id="page-quiz" class="page" role="application" aria-label="Quiz in progress">
+
+  <header class="quiz-header" role="banner">
+    <div class="qh-left">
+      <span class="qh-label" id="q-num-label">Q1 of 10</span>
+      <!-- CO2: role="progressbar" -->
+      <div class="quiz-prog-outer" role="progressbar"
+        aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"
+        aria-label="Quiz progress" id="quiz-prog-outer">
+        <div class="quiz-prog-inner" id="quiz-prog"></div>
+      </div>
+    </div>
+    <div class="qh-mid">
+      <div class="live-score">
+        <span class="ls-lbl">Score</span>
+        <span class="ls-val" id="live-score">0</span>
+      </div>
+    </div>
+    <div class="qh-right">
+      <div class="timer-wrap" aria-label="Time remaining">
+        <svg class="timer-svg" viewBox="0 0 52 52" aria-hidden="true">
+          <circle cx="26" cy="26" r="20" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="3.5"/>
+          <circle cx="26" cy="26" r="20" fill="none" stroke="currentColor" stroke-width="3.5"
+            stroke-dasharray="125.7" stroke-dashoffset="125.7"
+            stroke-linecap="round" transform="rotate(-90 26 26)"
+            id="timer-circle" />
+        </svg>
+        <span class="timer-num" id="timer-num">—</span>
+      </div>
+      <button class="quit-link" onclick="confirmQuit()" aria-label="Quit quiz">✕ Quit</button>
+    </div>
+  </header>
+
+  <main class="quiz-main" role="main">
+    <div class="q-wrap">
+      <div class="q-meta">
+        <span class="q-tag diff-tag" id="q-diff-tag">Medium</span>
+        <span class="q-tag subj-tag" id="q-subj-tag">Subject</span>
+        <span class="q-pts" id="q-pts-label">+10 pts</span>
+      </div>
+      <h2 class="q-text" id="q-text" tabindex="-1">Loading question…</h2>
+      <!-- CO2: role="radiogroup" for options -->
+      <div class="q-opts" id="q-opts" role="radiogroup" aria-label="Answer choices"></div>
+      <!-- CO4: DOM-injected explanation box -->
+      <div class="q-explain" id="q-explain" role="region"
+        aria-label="Explanation" hidden></div>
+    </div>
+  </main>
+
+  <footer class="quiz-footer" role="contentinfo">
+    <span class="qf-meta" id="qf-meta"></span>
+    <div class="qf-btns">
+      <button class="btn-ghost" id="btn-next" onclick="nextQ()" hidden aria-label="Next question">
+        Next →
+      </button>
+      <button class="btn-accent" id="btn-submit" onclick="submitAnswer()" aria-label="Submit your answer">
+        Submit
+      </button>
+    </div>
+  </footer>
+</div>
+
+
+<!-- ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  PAGE: RESULTS
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ -->
+<div id="page-result" class="page" role="main" aria-label="Quiz Results">
+  <div class="result-wrap">
+    <div class="result-top">
+      <h1 class="result-heading">Quiz Complete!</h1>
+      <div class="score-ring-wrap" role="img" aria-label="Score visualization">
+        <svg class="score-ring" viewBox="0 0 180 180" aria-hidden="true">
+          <circle cx="90" cy="90" r="76" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="12"/>
+          <circle cx="90" cy="90" r="76" fill="none"
+            stroke="url(#score-grad)" stroke-width="12"
+            stroke-linecap="round"
+            stroke-dasharray="477.5" stroke-dashoffset="477.5"
+            transform="rotate(-90 90 90)" id="score-ring-circle"/>
+          <defs>
+            <linearGradient id="score-grad">
+              <stop offset="0%" stop-color="#f59e0b"/>
+              <stop offset="100%" stop-color="#06b6d4"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <div class="ring-center">
+          <div class="ring-pct" id="res-pct">0%</div>
+          <div class="ring-lbl">Score</div>
+        </div>
+      </div>
+      <div class="res-grade" id="res-grade">—</div>
+      <p class="res-msg" id="res-msg"></p>
+    </div>
+
+    <div class="res-stats">
+      <div class="rs-item green">
+        <div class="rs-val" id="rs-correct">0</div>
+        <div class="rs-lbl">Correct</div>
+      </div>
+      <div class="rs-item red">
+        <div class="rs-val" id="rs-wrong">0</div>
+        <div class="rs-lbl">Wrong</div>
+      </div>
+      <div class="rs-item amber">
+        <div class="rs-val" id="rs-skip">0</div>
+        <div class="rs-lbl">Skipped</div>
+      </div>
+      <div class="rs-item blue">
+        <div class="rs-val" id="rs-time">0s</div>
+        <div class="rs-lbl">Avg Time</div>
+      </div>
+    </div>
+
+    <div class="res-improve" id="res-improve" aria-label="Improvement suggestions"></div>
+
+    <div class="res-charts">
+      <div class="card">
+        <div class="card-head"><h3 class="card-title">Answer Breakdown</h3></div>
+        <figure>
+          <canvas id="chart-result" role="img" aria-label="Doughnut chart of answer results"></canvas>
+        </figure>
+      </div>
+      <div class="card">
+        <div class="card-head"><h3 class="card-title">Question Review</h3></div>
+        <div id="q-review" style="max-height:320px;overflow-y:auto" role="list"
+          aria-label="Review of each question"></div>
+      </div>
+    </div>
+
+    <div class="res-actions">
+      <button class="btn-ghost" onclick="showSection('quiz-setup');showPage('app')">Retry</button>
+      <button class="btn-accent" onclick="backToDash()">Dashboard →</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+  GLOBAL UI: Modal, Toast
+  CO4: DOM manipulation
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ -->
+
+<!-- Quit modal -->
+<div id="quit-modal" class="modal-backdrop" role="dialog"
+  aria-modal="true" aria-labelledby="qm-title" hidden>
+  <div class="modal-box">
+    <div class="modal-emoji" aria-hidden="true">⚠️</div>
+    <h2 class="modal-title" id="qm-title">Quit Quiz?</h2>
+    <p class="modal-text">Your progress will be lost and won't be saved.</p>
+    <div class="modal-btns">
+      <button class="btn-ghost" onclick="closeModal('quit-modal')">Keep Going</button>
+      <button class="btn-danger" onclick="doQuit()">Yes, Quit</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true" hidden>
+  <span id="toast-icon" aria-hidden="true"></span>
+  <span id="toast-text"></span>
+</div>
+
+<!-- CO5: ES6 module entry point -->
+<script type="module" src="script.js"></script>
+
+</body>
+</html>
